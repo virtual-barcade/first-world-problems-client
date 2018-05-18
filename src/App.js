@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import sampleData from './sample-data.json';
 import SongView from './SongElements/SongView';
+import SearchBar from './SearchBar';
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +11,12 @@ class App extends Component {
 
     this.state = {
       song: {},
+      term: '',
     };
+
+    this.onSearchTermChange = this.onSearchTermChange.bind(this);
+    this.querySpotify = this.querySpotify.bind(this);
+    this.generateRandomProblem = this.generateRandomProblem.bind(this);
   }
 
   componentDidMount() {
@@ -22,17 +28,34 @@ class App extends Component {
     );
   }
 
+  onSearchTermChange(term) {
+    this.setState({ term });
+  }
+
+  querySpotify(event) {
+    console.log('Firing submit event');
+    event.preventDefault();
+  }
+
+  generateRandomProblem(event) {
+    console.log('Firing button event');
+    event.preventDefault();
+  }
+
   render() {
-    console.log(Object.keys(this.state.song).length);
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p className="App-intro">placeholder spaceholder</p>
+        <SearchBar
+          term={this.state.term}
+          onSearchTermChange={this.onSearchTermChange}
+          querySpotify={this.querySpotify}
+          generateRandomProblem={this.generateRandomProblem}
+        />
         {Object.keys(this.state.song).length === 0 ? (
           <div />
         ) : (
