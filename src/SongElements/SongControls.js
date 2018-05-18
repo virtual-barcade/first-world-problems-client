@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SongControls = ({ songUrl }) => (
-  <div>
+  <div className="song-card-element">
     <audio controls="controls" autoPlay src={songUrl} />
   </div>
 );
