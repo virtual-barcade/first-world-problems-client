@@ -3,3 +3,25 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.song-card-element {
+  padding: 0.5em;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container {
+  width: 75%;
+  height: 75%;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}

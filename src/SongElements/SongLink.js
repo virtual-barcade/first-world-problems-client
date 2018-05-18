@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SongLink = ({ songLink }) => (
-  <div>
+  <div className="song-card-element">
     <a href={songLink} target="_blank">
       Link to Full Track
     </a>
