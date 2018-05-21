@@ -13,26 +13,22 @@ class App extends Component {
       term: '',
       currentProblem: '',
     };
-
-    this.onSearchTermChange = this.onSearchTermChange.bind(this);
-    this.querySpotify = this.querySpotify.bind(this);
-    this.generateRandomProblem = this.generateRandomProblem.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.setState(
       {
         song: sampleData,
       },
       () => console.log(this.state.song),
     );
-  }
+  };
 
   onSearchTermChange = term => {
     this.setState({ term });
   };
 
-  querySpotify(event) {
+  querySpotify = event => {
     event.preventDefault();
     axios
       .get(
@@ -53,13 +49,13 @@ class App extends Component {
       .catch(err => {
         console.error('Error retrieving song: ', err);
       });
-  }
+  };
 
-  generateRandomProblem(event) {
+  generateRandomProblem = event => {
     event.preventDefault();
-  }
+  };
 
-  render() {
+  render = () => {
     const { currentProblem, term, song } = this.state;
     return (
       <div className="app">
@@ -76,7 +72,7 @@ class App extends Component {
         <SongView song={song} currentProblem={currentProblem} />
       </div>
     );
-  }
+  };
 }
 
 export default App;
