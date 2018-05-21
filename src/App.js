@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import sampleData from './sample-data.json';
 import SongView from './SongElements/SongView';
 import SearchBar from './SearchBar';
@@ -10,6 +11,7 @@ class App extends Component {
     this.state = {
       song: {},
       term: '',
+      currentProblem: '',
     };
 
     this.onSearchTermChange = this.onSearchTermChange.bind(this);
@@ -31,16 +33,34 @@ class App extends Component {
   }
 
   querySpotify(event) {
-    console.log('Firing submit event');
     event.preventDefault();
+    axios
+      .get(
+        `https://first-world-problems-api.herokuapp.com/api/song/${
+          this.state.term
+        }`,
+      )
+      .then(song => {
+        this.setState(
+          {
+            song: song.data,
+            term: '',
+            currentProblem: this.state.term,
+          },
+          () => console.log(this.state),
+        );
+      })
+      .catch(err => {
+        console.error('Error retrieving song: ', err);
+      });
   }
 
   generateRandomProblem(event) {
-    console.log('Firing button event');
     event.preventDefault();
   }
 
   render() {
+    const { currentProblem, term, song } = this.state;
     return (
       <div className="app">
         <header className="header">
@@ -48,16 +68,13 @@ class App extends Component {
         </header>
         <div className="space" />
         <SearchBar
-          term={this.state.term}
+          term={term}
           onSearchTermChange={this.onSearchTermChange}
           querySpotify={this.querySpotify}
           generateRandomProblem={this.generateRandomProblem}
         />
-        {Object.keys(this.state.song).length === 0 ? (
-          <div />
-        ) : (
-          <SongView song={this.state.song} />
-        )}
+        <p>{currentProblem}</p>
+        {Object.keys(song).length === 0 ? <div /> : <SongView song={song} />}
       </div>
     );
   }
