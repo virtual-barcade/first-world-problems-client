@@ -3,6 +3,7 @@ import axios from 'axios';
 import sampleData from './sample-data.json';
 import SongView from './SongElements/SongView';
 import SearchBar from './SearchBar';
+import ToggleSwitch from './ToggleSwitch';
 
 class App extends Component {
   constructor(props) {
@@ -12,11 +13,13 @@ class App extends Component {
       song: {},
       term: '',
       currentProblem: '',
+      autoplay: false,
     };
 
     this.onSearchTermChange = this.onSearchTermChange.bind(this);
     this.querySpotify = this.querySpotify.bind(this);
     this.generateRandomProblem = this.generateRandomProblem.bind(this);
+    // this.toggleAutoplay = this.toggleAutoplay.bind(this);
   }
 
   componentDidMount() {
@@ -28,9 +31,18 @@ class App extends Component {
     );
   }
 
-  onSearchTermChange(term) {
+  onSearchTermChange = term => {
     this.setState({ term });
-  }
+  };
+
+  toggleAutoplay = () => {
+    this.setState(
+      {
+        autoplay: !this.state.autoplay,
+      },
+      () => console.log(this.state),
+    );
+  };
 
   querySpotify(event) {
     event.preventDefault();
@@ -60,7 +72,7 @@ class App extends Component {
   }
 
   render() {
-    const { currentProblem, term, song } = this.state;
+    const { currentProblem, term, song, autoplay } = this.state;
     return (
       <div className="app">
         <header className="header">
@@ -73,8 +85,13 @@ class App extends Component {
           querySpotify={this.querySpotify}
           generateRandomProblem={this.generateRandomProblem}
         />
+        <ToggleSwitch toggleAutoplay={this.toggleAutoplay} />
         <p>{currentProblem}</p>
-        {Object.keys(song).length === 0 ? <div /> : <SongView song={song} />}
+        {Object.keys(song).length === 0 ? (
+          <div />
+        ) : (
+          <SongView song={song} autoplayEnabled={autoplay} />
+        )}
       </div>
     );
   }
