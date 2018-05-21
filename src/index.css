@@ -4,6 +4,32 @@ body {
   font-family: sans-serif;
 }
 
+form > div {
+  padding: 0.125em;
+}
+
+input {
+  text-align: center;
+}
+
+.app {
+  text-align: center;
+}
+
+.header {
+  background-color: #222;
+  padding: 1em;
+  color: white;
+}
+
+.title {
+  font-size: 2em;
+}
+
+.space {
+  padding: 0.5em;
+}
+
 .song-card-element {
   padding: 0.5em;
 }

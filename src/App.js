@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import sampleData from './sample-data.json';
 import SongView from './SongElements/SongView';
 import SearchBar from './SearchBar';
@@ -44,12 +42,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className="app">
+        <header className="header">
+          <h1 className="title">First World Problems</h1>
         </header>
-        <p className="App-intro">placeholder spaceholder</p>
+        <div className="space" />
         <SearchBar
           term={this.state.term}
           onSearchTermChange={this.onSearchTermChange}
