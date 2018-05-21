@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SongCard from './SongCard';
-import ToggleSwitch from '../ToggleSwitch';
+import ToggleSwitch from './ToggleSwitch';
 
 class SongView extends Component {
   constructor(props) {
