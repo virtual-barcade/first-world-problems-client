@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SongCardDefaultView = () => (
-  <div className="flex-container">
+  <div className="flex-container-column">
     <p>
       Enter a first world problem, listen to a sad song! Let's wallow in our
       sadness a bit.
