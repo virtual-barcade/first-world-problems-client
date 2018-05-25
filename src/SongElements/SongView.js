@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SongCard from './SongCard';
 import ToggleSwitch from './ToggleSwitch';
+import SongCardDefaultView from './SongCardDefaultView';
 
 class SongView extends Component {
   constructor(props) {
@@ -10,31 +11,28 @@ class SongView extends Component {
   }
 
   toggleAutoplay = () => {
-    this.setState(
-      {
-        autoplay: !this.state.autoplay,
-      },
-      () => console.log(this.state),
-    );
+    this.setState({
+      autoplay: !this.state.autoplay,
+    });
   };
 
   render() {
     const { song, currentProblem } = this.props;
     const { autoplay } = this.state;
-    if (Object.keys(song).length === 0) {
-      return <div />;
-    } else {
-      return (
-        <div>
-          <ToggleSwitch
-            toggleAutoplay={this.toggleAutoplay}
-            autoplayEnabled={autoplay}
-          />
-          <p>{currentProblem}</p>
+    return (
+      <div>
+        <ToggleSwitch
+          toggleAutoplay={this.toggleAutoplay}
+          autoplayEnabled={autoplay}
+        />
+        <p>{currentProblem}</p>
+        {Object.keys(song).length === 0 ? (
+          <SongCardDefaultView />
+        ) : (
           <SongCard song={song} key={song.id} autoplayEnabled={autoplay} />
-        </div>
-      );
-    }
+        )}
+      </div>
+    );
   }
 }
 
