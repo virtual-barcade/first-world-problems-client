@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { fetchSong, sampleFirstWorldProblems } from './services/spotify';
 import sampleData from './sample-data.json';
 import SongView from './SongElements/SongView';
 import SearchBar from './SearchBar';
@@ -16,43 +16,40 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.setState(
-      {
-        song: sampleData,
-      },
-      () => console.log(this.state.song),
-    );
+    this.setState({
+      song: sampleData,
+    });
   };
 
-  onSearchTermChange = term => {
-    this.setState({ term });
+  onSearchTermChange = term => this.setState({ term });
+
+  setAppState = (song, term, currentProblem) => {
+    this.setState(
+      {
+        song,
+        term,
+        currentProblem,
+      },
+      () => console.log(this.state),
+    );
   };
 
   querySpotify = event => {
     event.preventDefault();
-    axios
-      .get(
-        `https://first-world-problems-api.herokuapp.com/api/song/${
-          this.state.term
-        }`,
-      )
-      .then(song => {
-        this.setState(
-          {
-            song: song.data,
-            term: '',
-            currentProblem: this.state.term,
-          },
-          () => console.log(this.state),
-        );
-      })
-      .catch(err => {
-        console.error('Error retrieving song: ', err);
-      });
+    fetchSong(this.state.term)
+      .then(song => this.setAppState(song.data, '', this.state.term))
+      .catch(err => console.error('Error retrieving song: ', err));
   };
 
-  generateRandomProblem = event => {
+  generateRandomProblemAndQuery = event => {
     event.preventDefault();
+    const randIndex = Math.floor(
+      Math.random() * sampleFirstWorldProblems.length,
+    );
+    const problem = sampleFirstWorldProblems[randIndex];
+    fetchSong(problem)
+      .then(song => this.setAppState(song.data, '', problem))
+      .catch(err => console.error('Error retrieving song: ', err));
   };
 
   render = () => {
@@ -67,7 +64,7 @@ class App extends Component {
           term={term}
           onSearchTermChange={this.onSearchTermChange}
           querySpotify={this.querySpotify}
-          generateRandomProblem={this.generateRandomProblem}
+          generateRandomProblemAndQuery={this.generateRandomProblemAndQuery}
         />
         <SongView song={song} currentProblem={currentProblem} />
       </div>
