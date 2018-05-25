@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { fetchSong, sampleFirstWorldProblems } from './services/spotify';
-import sampleData from './sample-data.json';
 import SongView from './SongElements/SongView';
 import SearchBar from './SearchBar';
+import { fetchSong, sampleFirstWorldProblems } from './services/spotify';
 
 class App extends Component {
   constructor(props) {
@@ -14,12 +13,6 @@ class App extends Component {
       currentProblem: '',
     };
   }
-
-  componentDidMount = () => {
-    this.setState({
-      song: sampleData,
-    });
-  };
 
   onSearchTermChange = term => this.setState({ term });
 
