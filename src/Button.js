@@ -1,9 +1,17 @@
 import React from 'react';
+import './Button.css';
 
 const Button = ({ message, type, callback = event => {} }) => {
   return (
-    <div onClick={event => callback(event)}>
-      <button type={type}>{message}</button>
+    <div className="space">
+      <button
+        onClick={event => callback(event)}
+        onMouseDown={event => event.preventDefault()}
+        className="large blue button"
+        type={type}
+      >
+        {message}
+      </button>
     </div>
   );
 };

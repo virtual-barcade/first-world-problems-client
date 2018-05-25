@@ -38,9 +38,16 @@ a {
   padding: 0.5em;
 }
 
-.flex-container {
+.flex-container-column {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
