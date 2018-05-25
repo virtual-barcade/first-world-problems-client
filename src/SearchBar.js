@@ -5,7 +5,7 @@ const SearchBar = ({
   term,
   onSearchTermChange,
   querySpotify,
-  generateRandomProblem,
+  generateRandomProblemAndQuery,
 }) => (
   <div>
     <form onSubmit={event => querySpotify(event)}>
@@ -22,7 +22,7 @@ const SearchBar = ({
       <Button
         message={'Random'}
         type={'button'}
-        callback={generateRandomProblem}
+        callback={generateRandomProblemAndQuery}
       />
     </form>
   </div>
