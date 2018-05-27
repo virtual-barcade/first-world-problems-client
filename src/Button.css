@@ -31,7 +31,6 @@
     0 2px 2px -1px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 2px 2px -1px rgba(0, 0, 0, 0.5),
     0 1px 0 rgba(255, 255, 255, 0.3) inset;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -65,22 +64,20 @@
   top: 2px;
 }
 
-.button.blue {
+.button.charcoal {
   color: #fff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
-.button.blue {
-  /* background-color: #269ce9; */
+.button.charcoal {
   background-color: #222;
-  /* border-color: #269ce9; */
   border-color: rgb(165, 160, 160);
 }
 
-.button.blue:hover {
+.button.charcoal:hover {
   background-color: rgb(134, 133, 133);
 }
 
-.button.blue:active {
+.button.charcoal:active {
   background: rgb(165, 160, 160);
 }

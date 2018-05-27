@@ -7,7 +7,7 @@ const Button = ({ message, type, callback = event => {} }) => {
       <button
         onClick={event => callback(event)}
         onMouseDown={event => event.preventDefault()}
-        className="large blue button"
+        className="large charcoal button"
         type={type}
       >
         {message}
