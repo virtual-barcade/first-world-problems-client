@@ -53,6 +53,13 @@ a:visited {
   align-items: center;
 }
 
+.flex-container-column-left-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
 .flex-container-row {
   display: flex;
   flex-direction: row;
