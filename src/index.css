@@ -17,8 +17,10 @@ input {
   font-size: 1.5em;
 }
 
-a {
+a,
+a:visited {
   text-decoration: none;
+  color: white;
 }
 
 .app {
@@ -55,6 +57,13 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+}
+
+.flex-container-row-left-align {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
   align-items: center;
 }
 

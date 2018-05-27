@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SongCard from './SongCard';
 import ToggleSwitch from './ToggleSwitch';
 import SongCardDefaultView from './SongCardDefaultView';
+import './SongView.css';
 
 class SongView extends Component {
   constructor(props) {
@@ -20,12 +21,14 @@ class SongView extends Component {
     const { song, currentProblem } = this.props;
     const { autoplay } = this.state;
     return (
-      <div>
-        <ToggleSwitch
-          toggleAutoplay={this.toggleAutoplay}
-          autoplayEnabled={autoplay}
-        />
-        <p>{currentProblem}</p>
+      <div className="song-view">
+        <div className="flex-container-row-left-align">
+          <ToggleSwitch
+            toggleAutoplay={this.toggleAutoplay}
+            autoplayEnabled={autoplay}
+          />
+        </div>
+        <p className="current-problem">{currentProblem}</p>
         {Object.keys(song).length === 0 ? (
           <SongCardDefaultView />
         ) : (
