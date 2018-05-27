@@ -28,11 +28,15 @@ class SongView extends Component {
             autoplayEnabled={autoplay}
           />
         </div>
-        <p className="current-problem">{currentProblem}</p>
-        {Object.keys(song).length === 0 ? (
-          <SongCardDefaultView />
+        {currentProblem.length ? (
+          <p className="current-problem">{currentProblem}</p>
         ) : (
+          <div />
+        )}
+        {Object.keys(song).length ? (
           <SongCard song={song} key={song.id} autoplayEnabled={autoplay} />
+        ) : (
+          <SongCardDefaultView />
         )}
       </div>
     );
