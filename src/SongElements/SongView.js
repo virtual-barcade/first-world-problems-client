@@ -20,6 +20,15 @@ class SongView extends Component {
   render() {
     const { song, currentProblem } = this.props;
     const { autoplay } = this.state;
+
+    const currentProblemView = currentProblem.length
+      ? [<p className="current-problem">{currentProblem}</p>]
+      : [<div />];
+
+    const songCardView = Object.keys(song).length
+      ? [<SongCard song={song} key={song.id} autoplayEnabled={autoplay} />]
+      : [<SongCardDefaultView />];
+
     return (
       <div className="song-view">
         <div className="flex-container-row-left-align">
@@ -28,16 +37,8 @@ class SongView extends Component {
             autoplayEnabled={autoplay}
           />
         </div>
-        {currentProblem.length ? (
-          <p className="current-problem">{currentProblem}</p>
-        ) : (
-          <div />
-        )}
-        {Object.keys(song).length ? (
-          <SongCard song={song} key={song.id} autoplayEnabled={autoplay} />
-        ) : (
-          <SongCardDefaultView />
-        )}
+        {currentProblemView}
+        {songCardView}
       </div>
     );
   }
