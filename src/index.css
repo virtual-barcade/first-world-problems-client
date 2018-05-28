@@ -1,7 +1,9 @@
 body {
   margin: 0;
+  margin-bottom: 2em;
   padding: 0;
   font-family: sans-serif;
+  font-size: 62.5%;
 }
 
 form > div {
@@ -10,10 +12,16 @@ form > div {
 
 input {
   text-align: center;
+  border: none;
+  border-bottom: 2px solid #222;
+  width: 75%;
+  font-size: 1.5em;
 }
 
-a {
+a,
+a:visited {
   text-decoration: none;
+  color: white;
 }
 
 .app {
@@ -27,7 +35,7 @@ a {
 }
 
 .title {
-  font-size: 2em;
+  font-size: 3.25em;
 }
 
 .space {
@@ -38,10 +46,31 @@ a {
   padding: 0.5em;
 }
 
-.flex-container {
+.flex-container-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.flex-container-column-left-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-container-row-left-align {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
   align-items: center;
 }
 

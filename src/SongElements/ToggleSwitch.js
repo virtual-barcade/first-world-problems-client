@@ -3,12 +3,14 @@ import './ToggleSwitch.css';
 
 const ToggleSwitch = ({ toggleAutoplay, autoplayEnabled }) => {
   return (
-    <div className="space">
-      <p>{`${autoplayEnabled ? `Disable` : `Enable`} Autoplay`}</p>
+    <div className="flex-container-row">
       <label className="switch">
         <input type="checkbox" onClick={() => toggleAutoplay()} />
         <span className="slider round" />
       </label>
+      <p className="autoplay-status">{`${
+        autoplayEnabled ? `Disable` : `Enable`
+      } Autoplay`}</p>
     </div>
   );
 };
