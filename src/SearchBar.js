@@ -18,12 +18,14 @@ const SearchBar = ({
           onChange={event => onSearchTermChange(event.target.value)}
         />
       </div>
-      <Button message={'Search'} type={'submit'} />
-      <Button
-        message={'Random'}
-        type={'button'}
-        callback={generateRandomProblemAndQuery}
-      />
+      <div className="flex-container-row">
+        <Button message={'Search'} type={'submit'} />
+        <Button
+          message={'Random'}
+          type={'button'}
+          callback={generateRandomProblemAndQuery}
+        />
+      </div>
     </form>
   </div>
 );
